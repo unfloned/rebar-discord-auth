@@ -79,19 +79,30 @@ async function handleToken(player: alt.Player, token: string) {
         return;
     }
 
-    if ( DiscordAuthConfig.SERVER_ID && DiscordAuthConfig.SERVER_ID.length !== 0 ) {
-        const guildMember = await getUserGuildMember(currentUser.id);
-        if ( !guildMember ) {
-            player.kick(translate.t("discord.auth.guild.no.member"));
-            return;
-        }
-
-        if ( DiscordAuthConfig.WHITELIST_ROLE_ID && DiscordAuthConfig.WHITELIST_ROLE_ID.length !== 0 ) {
-            const role = guildMember.roles.cache.get(DiscordAuthConfig.WHITELIST_ROLE_ID);
-            if ( !role ) {
-                player.kick(translate.t("discord.auth.guild.no.whitelist"));
+    if (DiscordAuthConfig.SERVER_ID && DiscordAuthConfig.SERVER_ID.length !== 0) {
+        try {
+            const guildMember = await getUserGuildMember(currentUser.id);
+            if (!guildMember) {
+                player.kick(translate.t("discord.auth.guild.no.member"));
                 return;
             }
+    
+            if (DiscordAuthConfig.WHITELIST_ROLE_ID && DiscordAuthConfig.WHITELIST_ROLE_ID.length !== 0) {
+                const role = guildMember.roles.cache.get(DiscordAuthConfig.WHITELIST_ROLE_ID);
+                if (!role) {
+                    player.kick(translate.t("discord.auth.guild.no.whitelist"));
+                    return;
+                }
+            }
+        } catch (error) {
+            if (error.code === 10007) {  // Unknown Member
+                alt.log(`Discord API Error: Unknown Member for user ${currentUser.username}`);
+                player.kick(translate.t("discord.auth.guild.no.member"));
+            } else {
+                alt.log(`Unexpected Discord API Error: ${error.message}`);
+                player.kick(translate.t("discord.auth.request.failed"));
+            }
+            return;
         }
     }
 
