@@ -33,5 +33,21 @@ setBulk({
         'discord.auth.title': 'Discord Hitelesítés.',
         'discord.auth.subtile': 'várj, amíg megtudjuk, ki vagy.',
         'discord.auth.information': 'lehet, hogy engedélyezned kell az alkalmazásunkat a Discordon.'
+    },
+    de: {
+        'discord.auth.to.long': 'Keine Sitzungsanforderung gefunden. Starten Sie den Client neu.',
+        'discord.auth.no.session': 'Keine Sitzungsanforderung gefunden. Starten Sie den Client neu.',
+        'discord.auth.already.complete': 'Sitzungsanforderung bereits abgeschlossen. Starten Sie den Client neu.',
+        'discord.auth.expired.session': 'Authentifizierungssitzung abgelaufen. Starten Sie den Client neu.',
+        'discord.auth.token.failed': 'Authentifizierung bei Discord fehlgeschlagen. Starten Sie den Client neu.',
+        'discord.auth.request.failed': 'Aktuellen Discord-Benutzer abrufen nicht möglich.',
+        'discord.auth.account.failed': 'Konto konnte nicht erstellt oder abgerufen werden.',
+        'discord.auth.guild.no.member': 'Sie sind nicht Mitglied unseres Discord-Servers. Bitte treten Sie vor der Verbindung bei.',
+        'discord.auth.guild.no.whitelist': 'Sie sind nicht auf der Whitelist. Bitte überprüfen Sie unsere Whitelist-Richtlinien.',
+        'discord.auth.success': 'wurde authentifiziert.',
+        'discord.auth.banned.no.reason': 'ohne jeglichen Grund',
+        'discord.auth.title': 'Discord-Authentifizierung.',
+        'discord.auth.subtile': 'warte, bis wir wissen, wer du bist.',
+        'discord.auth.information': 'möglicherweise müssen Sie unsere App in Discord autorisieren.'
     }
 })
